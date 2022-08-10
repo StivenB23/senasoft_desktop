@@ -1,0 +1,39 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <form method="post" th:object="${cliente}" th:action="@{/clientes/add}" class="col-md-4 offset-md-4 card card-body my-5">
+        <a href="/clientes">Volver Atras</a>
+        <h1 class="display-3 fw-bold text-center my-5">Agregar Cliente</h1>
+        <div class="mb-3">
+            <label for="cedulacliente">Cedula</label><br>
+            <input type="text" name="cedulacliente" id="cedulacliente" placeholder="Porfavor digite la cedula" class="form-control" th:field="*{cedulacliente}">
+            <div class="form-text fw-bold text-danger" th:if="${#fields.hasErrors('cedulacliente')}"th:errors="*{cedulacliente}"></div>
+        </div>
+        <div class="mb-3">
+            <label for="nombre">Nombre</label><br>
+            <input type="text" name="nombre" id="nombre" placeholder="Porfavor digite su nombre" class="form-control" th:field="*{nombre}">
+            <div class="form-text fw-bold text-danger" th:if="${#fields.hasErrors('nombre')}"th:errors="*{nombre}"></div>
+        </div>
+        <div class="mb-3">
+            <label for="telefono">Telefono</label><br>
+            <input type="tel" name="telefono" id="telefono" placeholder="Porfavor digite su telefono" class="form-control" th:field="*{telefono}">
+            <div class="form-text fw-bold text-danger" th:if="${#fields.hasErrors('telefono')}"th:errors="*{telefono}"></div>
+        </div>
+        <button type="submit" class="btn btn-primary fw-bold rounded w-100">Save</button>
+    </form>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  </body>
+</html>
