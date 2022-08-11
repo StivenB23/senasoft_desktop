@@ -6,12 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.NotFound;
-import org.hibernate.validator.constraints.UniqueElements;
 
 @Entity
 @Table(name="cliente")
@@ -19,11 +16,11 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idcliente;
-    
+
     @Column(name = "cedulacliente", unique = true)
     @NotEmpty(message = "La cedula no puede estar vacia")
     @Size(min = 10, max = 10, message = "La cedula debe tener 10 digitos")
-    
+
     private String cedulacliente;
 
 
@@ -37,9 +34,9 @@ public class Cliente {
     @Column(name = "estado")
     private Boolean estado = true;
 
-    
-    
-    
+
+
+
 
     public Cliente(Integer idcliente,
             @NotEmpty(message = "La cedula no puede estar vacia") @Size(min = 10, max = 10, message = "La cedula debe tener 10 digitos") String cedulacliente,
@@ -59,14 +56,14 @@ public class Cliente {
     public void setIdcliente(Integer idcliente) {
         this.idcliente = idcliente;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     public Boolean getEstado() {
         return estado;
     }
@@ -89,6 +86,6 @@ public class Cliente {
     public void setCedulacliente(String cedulacliente) {
         this.cedulacliente = cedulacliente;
     }
-    
-    
+
+
 }

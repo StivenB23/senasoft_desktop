@@ -1,5 +1,6 @@
 package sena.sena;
 
+import Views.Dashboard;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,16 +12,21 @@ import org.springframework.boot.CommandLineRunner;
 
 @SpringBootApplication
 public class SenaApplication implements CommandLineRunner {
-  private static final Logger LOG = LoggerFactory.getLogger(SenaApplication.class);
 
-	public static void main(String[] args) {
-    JOptionPane.showMessageDialog(null, "Hola mi principe");
-		SpringApplication.run(SenaApplication.class, args);
-    LOG.info("SenaApplication stopped");
-	}
+    private static final Logger LOG = LoggerFactory.getLogger(SenaApplication.class);
 
-  @Override
-  public void run(String... args) throws Exception {
-  }
+    public static void main(String[] args) {
+        System.setProperty("java.awt.headless", "false");
+        SpringApplication.run(SenaApplication.class, args);
+        
+        LOG.info("SenaApplication stopped");
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        Dashboard dashboard = new Dashboard();
+        
+        dashboard.setVisible(true);
+    }
 
 }
