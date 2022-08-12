@@ -97,12 +97,15 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButtonClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClienteActionPerformed
         // TODO add your handling code here:
+        super.setVisible(false);
+        ClienteView cliente = new ClienteView();
+        cliente.setVisible(true);
     }//GEN-LAST:event_jButtonClienteActionPerformed
 
     private void jButtonCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCuentaActionPerformed
         // TODO add your handling code here:
         super.setVisible(false);
-        Cuenta cuenta = new Cuenta();
+        CuentaView cuenta = new CuentaView();
 
         cuenta.setVisible(true);
     }//GEN-LAST:event_jButtonCuentaActionPerformed

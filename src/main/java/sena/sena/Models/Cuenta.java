@@ -37,6 +37,13 @@ public class Cuenta {
     public Cuenta() {
     }
 
+    public Cuenta(String numerocuenta, String titular, double saldo, String fechaapertura) {
+        this.numerocuenta = numerocuenta;
+        this.titular = titular;
+        this.saldo = saldo;
+        this.fechaapertura = fechaapertura;
+    }
+
     public Cuenta(Integer idcuenta, @NotEmpty(message = "El numero de cuenta no puede estar vacia") String numerocuenta,
         @NotEmpty String titular, double saldo, @NotEmpty String fechaapertura, Boolean estado) {
       this.idcuenta = idcuenta;
@@ -46,6 +53,7 @@ public class Cuenta {
       this.fechaapertura = fechaapertura;
       this.estado = estado;
     }
+    
 
     public Integer getIdcuenta() {
       return idcuenta;

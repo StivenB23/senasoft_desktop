@@ -5,20 +5,24 @@
 package Views;
 
 import javax.swing.JOptionPane;
+import org.springframework.beans.factory.annotation.Autowired;
+import sena.sena.Models.Cuenta;
+import sena.sena.Models.Services.ICuentaService;
 
 /**
  *
  * @author andre
  */
-public class Cuenta extends javax.swing.JFrame {
-
+public class CuentaView extends javax.swing.JFrame {
+    
+    @Autowired
+    private ICuentaService cuentaService;
     /**
      * Creates new form Cuenta
      */
-    public Cuenta() {
+    public CuentaView() {
         initComponents();
         this.setLocationRelativeTo(null);
-
     }
 
     /**
@@ -160,7 +164,22 @@ public class Cuenta extends javax.swing.JFrame {
                 && !jTextFieldTitular.getText().isEmpty()
                 && !jTextFieldSaldo.getText().isEmpty()
                 && !jFormattedTextFieldFApertura.getText().isEmpty()) {
-
+            
+            
+            //Instancia de cliente
+            try{
+                Cuenta cuenta = new Cuenta(jTextFieldNCuenta.getText(),
+                    jTextFieldTitular.getText(),
+                    Double.parseDouble(jTextFieldSaldo.getText()),
+                    jFormattedTextFieldFApertura.getText());
+            
+                  cuentaService.save(cuenta);
+                  
+            }catch(Exception e){
+                System.out.print(e);
+            }
+            
+            
             JOptionPane.showMessageDialog(null, "Logrado :)");
         } else {
             JOptionPane.showMessageDialog(null, "Fallamos :(");
@@ -189,20 +208,21 @@ public class Cuenta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuentaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuentaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuentaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CuentaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cuenta().setVisible(true);
+                new CuentaView().setVisible(true);
             }
         });
     }

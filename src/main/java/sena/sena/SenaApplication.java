@@ -25,7 +25,6 @@ public class SenaApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Dashboard dashboard = new Dashboard();
-        
         dashboard.setVisible(true);
     }
 
